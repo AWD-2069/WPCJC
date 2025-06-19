@@ -1,0 +1,30 @@
+# --- Remote GitLab backend configuration (commented out for local development) ---
+# backend:
+#   name: gitlab
+#   repo: AWD-2069/cleanitup_nextjs # e.g., myuser/my-decap-cms-project
+#   auth_type: pkce
+#   app_id: 3d6454e719c150aab704e753209e357ee7a1e2043ceef4a4b2be28c2f37544ac # See next step for how to get this
+
+# --- Local backend configuration for development ---
+backend:
+  name: test-repo
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "homepage"
+    label: "Homepage"
+    files:
+      - label: "Main Page"
+        name: "main_page"
+        file: "content/homepage.md"
+        fields:
+          - label: "Business"
+            name: "business"
+            widget: "string"
+            required: true
+          - label: "about us"
+            name: "about_us"
+            widget: "string"
+            required: true
