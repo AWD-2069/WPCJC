@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Menu } from "lucide-react";
 import navigationData from "@/content/navigation_links.json";
 
@@ -45,7 +46,7 @@ const Navbar1 = () => {
           <div className="flex items-center gap-6">
             {/* Logo */}
             <a href={logo.url} className="flex items-center gap-2">
-              <img src={logo.src} className="max-h-8" alt={logo.alt} />
+              <Image src={logo.src} className="max-h-8" alt={logo.alt} />
               <span className="text-lg font-semibold tracking-tighter">
                 {logo.title}
               </span>
@@ -89,7 +90,7 @@ const Navbar1 = () => {
           <div className="flex items-center justify-between">
             {/* Logo */}
             <a href={logo.url} className="flex items-center gap-2">
-              <img src={logo.src} className="max-h-8" alt={logo.alt} />
+              <Image src={logo.src} className="max-h-8" alt={logo.alt} />
               <span className="text-lg font-semibold tracking-tighter">
                 {logo.title}
               </span>
@@ -104,7 +105,7 @@ const Navbar1 = () => {
                 <SheetHeader>
                   <SheetTitle>
                     <a href={logo.url} className="flex items-center gap-2">
-                      <img src={logo.src} className="max-h-8" alt={logo.alt} />
+                      <Image src={logo.src} className="max-h-8" alt={logo.alt} />
                       <span className="text-lg font-semibold tracking-tighter">
                         {logo.title}
                       </span>

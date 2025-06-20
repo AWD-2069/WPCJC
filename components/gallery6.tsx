@@ -2,6 +2,7 @@
 
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
 import type { CarouselApi } from "@/components/ui/carousel";
@@ -147,7 +148,7 @@ const Gallery6 = ({
                               style={{ height: 250 }}
                             ></iframe>
                           ) : (
-                            <img
+                            <Image
                               src={item.image}
                               alt={item.title}
                               className="h-full w-full object-cover object-center"

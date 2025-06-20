@@ -11,6 +11,7 @@ cache:
     - .pnpm-store/ # Cache pnpm store for faster installs
 
 before_script:
+  - corepack prepare pnpm@latest --activate
   - corepack enable
   - pnpm install
 
@@ -26,8 +27,8 @@ build_job:
 pages:
   stage: deploy
   script:
-    - mv public out
-    - mv out public
+    - rm -rf public/*
+    - mv out/* public
     - find public -type f -regex '.*\.\(htm\|html\|txt\|text\|js\|css\)$' -exec gzip -f -k {} \;
   dependencies:
     - build_job
