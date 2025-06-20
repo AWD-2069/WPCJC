@@ -37,9 +37,9 @@ const Contact7 = ({
     <section className="bg-background py-16">
       <div className="container">
         <div className="mb-14">
-          <h1 className="mt-2 mb-3 text-3xl font-semibold text-balance md:text-4xl">
+          <h2 className="mt-2 mb-3 text-3xl font-semibold text-balance md:text-4xl">
             {title}
-          </h1>
+          </h2>
           <p className="max-w-xl text-lg text-muted-foreground">
             {description}
           </p>
