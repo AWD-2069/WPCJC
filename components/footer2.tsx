@@ -1,4 +1,4 @@
-import footerData from "@/content/footer.json";
+import footerData from "@/content/navigation_links.json";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -14,22 +14,20 @@ const Footer2 = () => {
   const { logo, tagline, menuItems, copyright } = footerData;
 
   return (
-    <section className="py-32">
+    <section className="py-16">
       <div className="container mx-auto">
         <footer className="p-8 md:p-12 lg:p-16 bg-background rounded-lg shadow-md">
           <div className="grid grid-cols-2 gap-8 lg:grid-cols-6">
             <div className="col-span-2 mb-8 lg:mb-0">
               <div className="flex items-center gap-2 lg:justify-start">
-                <Link href={logo.url}>
-                  <Image
-                    src={logo.src}
-                    alt={logo.alt}
-                    title={logo.title}
-                    className="h-10"
-                    width={40}
-                    height={40}
-                  />
-                </Link>
+                <Image
+                  src={logo.src}
+                  alt={logo.alt}
+                  title={logo.title}
+                  className="h-10"
+                  width={40}
+                  height={40}
+                />
                 <p className="text-xl font-semibold">{logo.title}</p>
               </div>
               <p className="mt-4 font-bold">{tagline}</p>
