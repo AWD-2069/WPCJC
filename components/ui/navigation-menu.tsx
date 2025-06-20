@@ -71,12 +71,14 @@ function NavigationMenuTrigger({
     <NavigationMenuPrimitive.Trigger
       data-slot="navigation-menu-trigger"
       className={cn(navigationMenuTriggerStyle(), "group", className)}
+      aria-label="Open navigation menu"
       {...props}
     >
       {children}{" "}
       <ChevronDownIcon
         className="relative top-[1px] ml-1 size-3 transition duration-300 group-data-[state=open]:rotate-180"
-        aria-hidden="true"
+        aria-label="Navigation menu dropdown indicator"
+        aria-hidden="false"
       />
     </NavigationMenuPrimitive.Trigger>
   )

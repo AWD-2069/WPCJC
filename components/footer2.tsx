@@ -34,7 +34,7 @@ const Footer2 = () => {
             </div>
             {menuItems.map((section: MenuItem, sectionIdx: number) => (
               <div key={sectionIdx}>
-                <h3 className="mb-4 font-bold">{section.title}</h3>
+                <h2 className="mb-4 font-bold">{section.title}</h2>
                 <ul className="space-y-4 text-muted-foreground">
                   {section.links.map((link, linkIdx) => (
                     <li key={linkIdx} className="font-medium">
