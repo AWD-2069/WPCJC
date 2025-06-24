@@ -13,18 +13,12 @@ media_folder: "public/uploads"
 public_folder: "/uploads"
 
 collections:
-  - name: "homepage"
-    label: "Homepage"
-    files:
-      - label: "Main Page"
-        name: "main_page"
-        file: "content/homepage.md"
-        fields:
-          - label: "Business"
-            name: "business"
-            widget: "string"
-            required: true
-          - label: "about us"
-            name: "about_us"
-            widget: "string"
-            required: true
+  - name: "pages" # A friendly name for the collection
+    label: "Pages"
+    folder: "content" # The root folder for your Markdown files
+    create: true # Allow creating new pages
+    slug: "{{path}}/{{name}}" # This is crucial for matching folder structure
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}

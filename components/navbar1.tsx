@@ -39,7 +39,7 @@ const Navbar1 = () => {
   const { logo, menuItems } = navigationData;
 
   return (
-    <section className="py-4">
+    <header className="py-4">
       <div className="container">
         {/* Desktop Menu */}
         <nav className="hidden justify-between lg:flex">
@@ -166,7 +166,7 @@ const Navbar1 = () => {
           </div>
         </div>
       </div>
-    </section>
+    </header>
   );
 };
 

@@ -28,13 +28,13 @@ const Footer2 = () => {
                   width={40}
                   height={40}
                 />
-                <p className="text-xl font-semibold">{logo.title}</p>
+                <h2 className="text-xl font-semibold">{logo.title}</h2>
               </div>
               <p className="mt-4 font-bold">{tagline}</p>
             </div>
             {menuItems.map((section: MenuItem, sectionIdx: number) => (
               <div key={sectionIdx}>
-                <h3 className="mb-4 font-bold">{section.title}</h3>
+                <h3>{section.title}</h3>
                 <ul className="space-y-4 text-muted-foreground">
                   {section.links.map((link, linkIdx) => (
                     <li key={linkIdx} className="font-medium">
