@@ -1,9 +1,6 @@
 import Head from 'next/head'; // Head is a client component in App Router, import from 'next/head'
 import React, { ReactNode } from 'react';
 
-import { Footer2 } from "@/components/footer2";
-import { Navbar1 } from "@/components/navbar1";
-
 interface PageTemplateProps {
     children: ReactNode;
     title?: string;

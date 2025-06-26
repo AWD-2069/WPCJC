@@ -5,7 +5,7 @@ import matter from 'gray-matter';
 import ReactMarkdown from 'react-markdown';
 
 // Import your custom types
-import { PageContent, PageFrontmatter, PageParams } from '@/types/page';
+import { PageContent, PageFrontmatter, PageParams } from '@/types/page.d';
 
 // Your common page layout component
 import PageTemplate from '@/components/PageTemplate';
@@ -90,7 +90,7 @@ export default async function DynamicPage(props: { params: Promise<PageParams> }
         return (
             <PageTemplate title="Page Not Found" description="The page you requested could not be found.">
                 <h1>404 - Page Not Found</h1>
-                <p>Sorry, we can't find that page.</p>
+                <p>Sorry, we can&apos;t find that page.</p>
             </PageTemplate>
         );
     }
