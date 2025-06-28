@@ -9,6 +9,8 @@ import { PageContent, PageFrontmatter, PageParams } from '@/types/page.d';
 
 // Your common page layout component
 import PageTemplate from '@/components/PageTemplate';
+import { parseLeadershipStaff } from "@/lib/parseLeadershipStaff";
+import { LeadershipCard } from "@/components/LeadershipCard";
 
 const contentDirectory = path.join(process.cwd(), 'content');
 
@@ -81,7 +83,6 @@ export async function generateStaticParams(): Promise<PageParams[]> {
 // Data fetching happens directly inside them using async/await
 export default async function DynamicPage(props: { params: Promise<PageParams> }) {
     const { slug = [] } = await props.params;
-
     const pageContent = await getPageContent(slug);
 
     if (!pageContent) {
@@ -95,9 +96,41 @@ export default async function DynamicPage(props: { params: Promise<PageParams> }
         );
     }
 
+    // Check if this is the leadership-staff page
+    const isLeadershipStaff =
+      slug.join("/") === "about-us/leadership-staff";
+
+    let leadershipGroups = null;
+    if (isLeadershipStaff) {
+      leadershipGroups = parseLeadershipStaff(pageContent.content);
+    }
+
     return (
         <PageTemplate title={pageContent.data.title} description={pageContent.data.description}>
-            <ReactMarkdown>{pageContent.content}</ReactMarkdown>
+            {isLeadershipStaff && leadershipGroups ? (
+              <>
+                <h2 className="text-2xl font-bold mt-8 mb-4">Elders</h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                  {leadershipGroups.elders.map((person) => (
+                    <LeadershipCard key={person.name} {...person} />
+                  ))}
+                </div>
+                <h2 className="text-2xl font-bold mt-8 mb-4">Deacons</h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                  {leadershipGroups.deacons.map((person) => (
+                    <LeadershipCard key={person.name} {...person} />
+                  ))}
+                </div>
+                <h2 className="text-2xl font-bold mt-8 mb-4">Staff</h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                  {leadershipGroups.staff.map((person) => (
+                    <LeadershipCard key={person.name} {...person} />
+                  ))}
+                </div>
+              </>
+            ) : (
+              <ReactMarkdown>{pageContent.content}</ReactMarkdown>
+            )}
         </PageTemplate>
     );
 }
