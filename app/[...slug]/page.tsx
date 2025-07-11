@@ -107,30 +107,32 @@ export default async function DynamicPage(props: { params: Promise<PageParams> }
 
     return (
         <PageTemplate title={pageContent.data.title} description={pageContent.data.description}>
-            {isLeadershipStaff && leadershipGroups ? (
-              <>
-                <h2 className="text-2xl font-bold mt-8 mb-4">Elders</h2>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-                  {leadershipGroups.elders.map((person) => (
-                    <LeadershipCard key={person.name} {...person} />
-                  ))}
-                </div>
-                <h2 className="text-2xl font-bold mt-8 mb-4">Deacons</h2>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-                  {leadershipGroups.deacons.map((person) => (
-                    <LeadershipCard key={person.name} {...person} />
-                  ))}
-                </div>
-                <h2 className="text-2xl font-bold mt-8 mb-4">Staff</h2>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-                  {leadershipGroups.staff.map((person) => (
-                    <LeadershipCard key={person.name} {...person} />
-                  ))}
-                </div>
-              </>
-            ) : (
+          {isLeadershipStaff && leadershipGroups ? (
+            <>
+              <h2 className="text-2xl font-bold mt-8 mb-4">Staff</h2>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                {leadershipGroups.staff.map((person) => (
+                  <LeadershipCard key={person.name} {...person} />
+                ))}
+              </div>
+              <h2 className="text-2xl font-bold mt-8 mb-4">Elders</h2>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                {leadershipGroups.elders.map((person) => (
+                  <LeadershipCard key={person.name} {...person} />
+                ))}
+              </div>
+              <h2 className="text-2xl font-bold mt-8 mb-4">Deacons</h2>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                {leadershipGroups.deacons.map((person) => (
+                  <LeadershipCard key={person.name} {...person} />
+                ))}
+              </div>
+            </>
+          ) : (
+            <div className="page-content">
               <ReactMarkdown>{pageContent.content}</ReactMarkdown>
-            )}
+            </div>
+          )}
         </PageTemplate>
     );
 }

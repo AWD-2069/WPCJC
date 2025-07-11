@@ -1,24 +1,59 @@
-# --- Remote GitLab backend configuration (commented out for local development) ---
-# backend:
-#   name: gitlab
-#   repo: AWD-2069/cleanitup_nextjs # e.g., myuser/my-decap-cms-project
-#   auth_type: pkce
-#   app_id: 3d6454e719c150aab704e753209e357ee7a1e2043ceef4a4b2be28c2f37544ac # See next step for how to get this
 
-# --- Local backend configuration for development ---
 backend:
-  name: test-repo
+  name: gitlab
+  repo: AWD-2069/WPCJC
+  auth_type: pkce
+  app_id: 3d6454e719c150aab704e753209e357ee7a1e2043ceef4a4b2be28c2f37544ac
 
 media_folder: "public/uploads"
 public_folder: "/uploads"
 
 collections:
-  - name: "pages" # A friendly name for the collection
+  - name: "pages"
     label: "Pages"
-    folder: "content" # The root folder for your Markdown files
-    create: true # Allow creating new pages
-    slug: "{{path}}/{{name}}" # This is crucial for matching folder structure
+    folder: "content"
+    create: true
+    slug: "{{path}}/{{name}}"
     fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Description", name: "description", widget: "text"}
-      - {label: "Body", name: "body", widget: "markdown"}
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text", required: false }
+      - label: "Hero Section"
+        name: "hero"
+        widget: "object"
+        fields:
+          - { label: "Heading", name: "heading", widget: "string", required: false }
+          - { label: "Description", name: "hero_description", widget: "text", required: false }
+          - { label: "Join Us Text", name: "join_us", widget: "string", required: false }
+          - { label: "Background Image", name: "backgroundImage", widget: "image", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "leadership_staff"
+    label: "Leadership & Staff"
+    folder: "content/about-us"
+    create: false
+    slug: "leadership-staff"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text", required: false }
+      - label: "Staff"
+        name: "staff"
+        widget: "list"
+        fields:
+          - { label: "Name", name: "name", widget: "string" }
+          - { label: "Image", name: "image", widget: "image" }
+          - { label: "Description", name: "description", widget: "string" }
+      - label: "Elders"
+        name: "elders"
+        widget: "list"
+        fields:
+          - { label: "Name", name: "name", widget: "string" }
+          - { label: "Image", name: "image", widget: "image" }
+          - { label: "Description", name: "description", widget: "string" }
+      - label: "Deacons"
+        name: "deacons"
+        widget: "list"
+        fields:
+          - { label: "Name", name: "name", widget: "string" }
+          - { label: "Image", name: "image", widget: "image" }
+          - { label: "Description", name: "description", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown", required: false }

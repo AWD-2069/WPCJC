@@ -246,4 +246,15 @@
     font-family: var(--font-mono, monospace);
     font-size: var(--font-size-xs);
   }
+  .page-content a {
+    color: var(--primary);
+    text-decoration: underline;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .page-content a:hover,
+  .page-content a:focus {
+    color: var(--accent);
+  }
 }

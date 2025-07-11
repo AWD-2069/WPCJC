@@ -6,3 +6,4 @@ TODO:
 
 - [ ] Add in all the content
 - [ ] Make it eye catching
+- [ ] Make footer responsive to different screen sizes

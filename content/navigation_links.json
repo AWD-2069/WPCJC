@@ -10,36 +10,35 @@
     {
       "title": "About Us",
       "links": [
-        { "text": "What We Believe", "url": "#" },
-        { "text": "Leadership & Staff", "url": "#" },
-        { "text": "Our Story", "url": "#" },
-        { "text": "Contact", "url": "#" }
+        { "text": "What We Believe", "url": "/about-us/what-we-believe" },
+        { "text": "Leadership & Staff", "url": "/about-us/leadership-staff" },
+        { "text": "Our Story", "url": "/about-us/our-story" },
+        { "text": "Contact", "url": "/about-us/contact" }
       ]
     },
     {
       "title": "Ministries",
       "links": [
-        { "text": "Children", "url": "#" },
-        { "text": "Youth", "url": "#" },
-        { "text": "Young Adults", "url": "#" },
-        { "text": "Adults", "url": "#" },
-        { "text": "Senior Fellowship", "url": "#" },
-        { "text": "Missions", "url": "#" },
-        { "text": "Music", "url": "#" },
-        { "text": "Prayer", "url": "#" },
-        { "text": "Wednesday Night Activities", "url": "#" }
+        { "text": "Children", "url": "/ministries/children" },
+        { "text": "Youth", "url": "/ministries/youth" },
+        { "text": "Young Adults", "url": "/ministries/young-adults" },
+        { "text": "Adults", "url": "/ministries/adults" },
+        { "text": "Senior Fellowship", "url": "/ministries/senior-fellowship" },
+        { "text": "Missions", "url": "/ministries/missions" },
+        { "text": "Music", "url": "/ministries/music" },
+        { "text": "Prayer", "url": "/ministries/prayer" },
+        { "text": "Wednesday Night Activities", "url": "/ministries/wednesday-night-activities" }
       ]
     },
     {
       "title": "Resources",
       "links": [
-        { "text": "Sermons", "url": "#" },
-        { "text": "Simple Gospel Message", "url": "#" },
-        { "text": "Building Use", "url": "#" },
-        { "text": "Calendar", "url": "#" },
-        { "text": "Work Orders", "url": "#" },
-        { "text": "Employment", "url": "#" }
-
+        { "text": "Sermons", "url": "/resources/sermons" },
+        { "text": "Simple Gospel Message", "url": "/resources/simple-gospel-message" },
+        { "text": "Building Use", "url": "/resources/building-use" },
+        { "text": "Calendar", "url": "/resources/calendar" },
+        { "text": "Work Orders", "url": "/resources/work-orders" },
+        { "text": "Employment", "url": "/resources/employment" }
       ]
     },
     {

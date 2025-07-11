@@ -1,5 +1,59 @@
 # Leadership and Staff
 
+## Staff
+
+- name: Andy Wyatt
+  image: /uploads/staff/Andy-Wyatt.webp
+  description: Senior Pastor
+
+- name: Mark Pearson
+  image: /uploads/staff/Mark-Pearson.webp
+  description: Assistant Pastor
+
+- name: Paul Lawing
+  image: /uploads/staff/Paul-Lawing.webp
+  description: Assistant Pastor
+
+- name: Bobby Roberts
+  image: /uploads/staff/Bobby-Roberts.webp
+  description: Church Planter – Christ Church Jonesborough
+
+- name: Trey Caines
+  image: /uploads/staff/Trey-Caines.webp
+  description: Youth Director
+
+- name: Jonnie Siemens
+  image: /uploads/staff/Jonnie-Siemens.webp
+  description: Children’s Ministries Director
+
+- name: Doug Hornsby
+  image: /uploads/staff/Doug-Hornsby.webp
+  description: Facilities Manager
+
+- name: Julie Bicknell
+  image: /uploads/staff/Julie-Bicknell.webp
+  description: Financial Secretary
+
+- name: Rebecca Horvath
+  image: /uploads/staff/Rebecca-Horvath.webp
+  description: Administrative Assistant
+
+- name: David Hale
+  image: /uploads/staff/David-Hale.webp
+  description: Choir Director
+
+- name: Sherrill Gibson
+  image: /uploads/staff/Sherrill-Gibson.webp
+  description: Church Organist
+
+- name: David Brickle
+  image: /uploads/staff/David-Brickle.webp
+  description: Pianist
+
+- name: Margie Fry
+  image: /uploads/staff/Margie-Fry.webp
+  description: Parish Nurse
+
 ## Church Leadership
 
 ### Elders
@@ -73,10 +127,3 @@
 - name: Phillip Connors
   image: /uploads/deacons/Phillip-Connors.webp
   description: Missions
-
-
-## Staff
-
-- name: Alice Green
-  image: /images/alice-green.jpg
-  description: Office Administrator.

@@ -5,9 +5,9 @@ export interface Person {
 }
 
 export interface LeadershipStaffGroups {
-  elders: Person[];
-  deacons: Person[];
   staff: Person[];
+  deacons: Person[];
+  elders: Person[];
 }
 
 function parseGroup(section: string): Person[] {
@@ -26,13 +26,13 @@ function parseGroup(section: string): Person[] {
 }
 
 export function parseLeadershipStaff(content: string): LeadershipStaffGroups {
-  const eldersSection = content.match(/### Elders([\s\S]*?)(###|\#\#|$)/);
-  const deaconsSection = content.match(/### Deacons([\s\S]*?)(###|\#\#|$)/);
   const staffSection = content.match(/## Staff([\s\S]*?)(###|\#\#|$)/);
+  const deaconsSection = content.match(/### Deacons([\s\S]*?)(###|\#\#|$)/);
+  const eldersSection = content.match(/### Elders([\s\S]*?)(###|\#\#|$)/);
 
   return {
-    elders: eldersSection ? parseGroup(eldersSection[1]) : [],
-    deacons: deaconsSection ? parseGroup(deaconsSection[1]) : [],
     staff: staffSection ? parseGroup(staffSection[1]) : [],
+    deacons: deaconsSection ? parseGroup(deaconsSection[1]) : [],
+    elders: eldersSection ? parseGroup(eldersSection[1]) : [],
   };
 }

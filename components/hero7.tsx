@@ -4,19 +4,21 @@ interface Hero7Props {
   heading?: string;
   description?: string;
   join_us?: string;
+  backgroundImage?: string; // New prop for background image
 }
 
 const Hero7 = ({
   heading = "Welcome to Westminster Presbyterian Church",
   description = `Westminster Presbyterian Church isn’t a building—we are a family of faith, drawn together as  children of God and heirs of His salvation in Christ.`,
-  join_us = "Join us for worship at 8:30 or 11:00 am each Sunday."
+  join_us = "Join us for worship at 8:30 or 11:00 am each Sunday.",
+  backgroundImage = "/uploads/hero-bg.webp", // Default background image
 }: Hero7Props) => {
   return (
     <section className="relative rounded-3xl overflow-hidden mx-2 sm:mx-8 mt-6">
       <div className="pt-8 bg-transparent" />
       <div
         className="relative bg-cover bg-center pt-24 pb-32 rounded-3xl overflow-hidden"
-        style={{ backgroundImage: "url('/uploads/hero-bg.webp')" }}
+        style={{ backgroundImage: `url('${backgroundImage}')` }}
       >
         <div className="absolute inset-0 bg-black/40 rounded-3xl" aria-hidden="true" />
         <div className="container text-center relative z-10">
