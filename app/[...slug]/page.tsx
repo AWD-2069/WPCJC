@@ -11,6 +11,7 @@ import { PageContent, PageFrontmatter, PageParams } from '@/types/page.d';
 import PageTemplate from '@/components/PageTemplate';
 import { parseLeadershipStaff } from "@/lib/parseLeadershipStaff";
 import { LeadershipCard } from "@/components/LeadershipCard";
+import { Hero7 } from "@/components/hero7";
 
 const contentDirectory = path.join(process.cwd(), 'content');
 
@@ -97,16 +98,21 @@ export default async function DynamicPage(props: { params: Promise<PageParams> }
     }
 
     // Check if this is the leadership-staff page
-    const isLeadershipStaff =
-      slug.join("/") === "about-us/leadership-staff";
-
+    const isLeadershipStaff = slug.join("/") === "about-us/leadership-staff";
     let leadershipGroups = null;
-    if (isLeadershipStaff) {
-      leadershipGroups = parseLeadershipStaff(pageContent.content);
+    if (isLeadershipStaff && pageContent?.data) {
+      leadershipGroups = {
+        staff: pageContent.data.staff || [],
+        elders: pageContent.data.elders || [],
+        deacons: pageContent.data.deacons || [],
+      };
     }
 
     return (
         <PageTemplate title={pageContent.data.title} description={pageContent.data.description}>
+          {pageContent.data.hero && (
+            <Hero7 {...pageContent.data.hero} />
+          )}
           {isLeadershipStaff && leadershipGroups ? (
             <>
               <h2 className="text-2xl font-bold mt-8 mb-4">Staff</h2>

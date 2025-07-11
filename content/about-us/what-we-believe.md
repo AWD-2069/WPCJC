@@ -1,3 +1,13 @@
+---
+title: What We Believe
+description: Learn about our beliefs and commitments.
+hero:
+  heading: "What We Believe"
+  description: "Discover the core beliefs and commitments of Westminster Presbyterian Church."
+  join_us: "Join us for worship and fellowship."
+  backgroundImage: "/uploads/hero-bg.webp"
+---
+
 # What We Believe
 
 ## We are committed to:
