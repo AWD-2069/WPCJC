@@ -1,14 +1,11 @@
 
-# backend:
-#   name: gitlab
-#   repo: AWD-2069/WPCJC
-#   branch: main
-#   auth_type: pkce
-#   app_id: 10bfa9d8d0fe5cbaca2b79693542aee0498a162912784c79d442b110ca7365d2
-#   base_url: https://gitlab.com
 backend:
-  name: git-gateway
+  name: gitlab
+  repo: AWD-2069/WPCJC
   branch: main
+  # auth_type: pkce
+  app_id: 10bfa9d8d0fe5cbaca2b79693542aee0498a162912784c79d442b110ca7365d2
+  base_url: https://gitlab.com
 
 media_folder: "public/uploads"
 public_folder: "/uploads"
