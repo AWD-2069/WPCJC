@@ -2,7 +2,8 @@
 backend:
   name: gitlab
   repo: AWD-2069/WPCJC
-  auth_proxy: true
+  branch: main
+  base_url: http://localhost
 
 media_folder: "public/uploads"
 public_folder: "/uploads"
