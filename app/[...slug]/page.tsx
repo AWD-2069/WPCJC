@@ -9,7 +9,6 @@ import { PageContent, PageFrontmatter, PageParams } from '@/types/page.d';
 
 // Your common page layout component
 import PageTemplate from '@/components/PageTemplate';
-import { parseLeadershipStaff } from "@/lib/parseLeadershipStaff";
 import { LeadershipCard } from "@/components/LeadershipCard";
 import { Hero7 } from "@/components/hero7";
 
@@ -117,19 +116,19 @@ export default async function DynamicPage(props: { params: Promise<PageParams> }
             <>
               <h2 className="text-2xl font-bold mt-8 mb-4">Staff</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-                {leadershipGroups.staff.map((person) => (
+                {leadershipGroups.staff.map((person: { name: string; image: string; description: string }) => (
                   <LeadershipCard key={person.name} {...person} />
                 ))}
               </div>
               <h2 className="text-2xl font-bold mt-8 mb-4">Elders</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-                {leadershipGroups.elders.map((person) => (
+                {leadershipGroups.elders.map((person: { name: string; image: string; description: string }) => (
                   <LeadershipCard key={person.name} {...person} />
                 ))}
               </div>
               <h2 className="text-2xl font-bold mt-8 mb-4">Deacons</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-                {leadershipGroups.deacons.map((person) => (
+                {leadershipGroups.deacons.map((person: { name: string; image: string; description: string }) => (
                   <LeadershipCard key={person.name} {...person} />
                 ))}
               </div>
