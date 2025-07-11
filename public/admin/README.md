@@ -1,0 +1,1 @@
+At some point, figure out how to run pipelines without editing or adding a file to same directory.
