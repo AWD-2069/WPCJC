@@ -58,3 +58,31 @@ collections:
           - { label: "Image", name: "image", widget: "image" }
           - { label: "Description", name: "description", widget: "string" }
       - { label: "Body", name: "body", widget: "markdown", required: false }
+
+  - name: "navigation"
+    label: "Navigation Links"
+    file: "content/navigation_links.json"
+    fields:
+      - label: "Logo"
+        name: "logo"
+        widget: "object"
+        fields:
+          - { label: "Source", name: "src", widget: "string" }
+          - { label: "Alt Text", name: "alt", widget: "string" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "URL", name: "url", widget: "string" }
+      - { label: "Tagline", name: "tagline", widget: "string" }
+      - { label: "Address", name: "address", widget: "string" }
+      - { label: "Phone", name: "phone", widget: "string" }
+      - label: "Menu Items"
+        name: "menuItems"
+        widget: "list"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - label: "Links"
+            name: "links"
+            widget: "list"
+            fields:
+              - { label: "Text", name: "text", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+      - { label: "Copyright", name: "copyright", widget: "string" }
