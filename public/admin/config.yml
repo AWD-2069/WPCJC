@@ -2,8 +2,7 @@
 backend:
   name: gitlab
   repo: AWD-2069/WPCJC
-  auth_type: pkce
-  app_id: 3d6454e719c150aab704e753209e357ee7a1e2043ceef4a4b2be28c2f37544ac
+  auth_proxy: true
 
 media_folder: "public/uploads"
 public_folder: "/uploads"
