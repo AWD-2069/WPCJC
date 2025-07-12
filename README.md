@@ -8,3 +8,4 @@ TODO:
 - [ ] Make it eye catching
 - [ ] Make footer responsive to different screen sizes
 - [ ] Build around DecapCMS
+- [ ] Sync to deploy with gitlab pages
