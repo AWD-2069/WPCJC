@@ -1,17 +1,48 @@
-import footerData from "@/content/navigation_links.json";
 import Link from "next/link";
 import Image from "next/image";
+import { getSections, getPages } from "@/lib/content"; // Use the same helpers as navbar
 
-interface MenuItem {
+interface Section {
   title: string;
-  links: {
-    text: string;
-    url: string;
-  }[];
+  order?: number;
+  description?: string;
 }
 
-const Footer2 = () => {
-  const { logo, tagline, menuItems, copyright } = footerData;
+interface Page {
+  title: string;
+  slug: string;
+  section?: string;
+}
+
+const Footer2 = async () => {
+  // Fetch sections and pages
+  const sections: Section[] = await getSections();
+  const pages: Page[] = await getPages();
+
+  // Group pages by section
+  const sectionMap: Record<string, Page[]> = {};
+  const unsectionedPages: Page[] = [];
+
+  pages.forEach((page) => {
+    if (page.section) {
+      if (!sectionMap[page.section]) sectionMap[page.section] = [];
+      sectionMap[page.section].push(page);
+    } else {
+      unsectionedPages.push(page);
+    }
+  });
+
+  // Sort sections by order if needed
+  const sortedSections = [...sections].sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
+
+  // Footer branding info (customize as needed)
+  const logo = {
+    src: "/uploads/AWD_logo.webp",
+    alt: "Armstrong Web Development Logo",
+    title: "Armstrong Web Development",
+  };
+  const tagline = "Your tagline here";
+  const copyright = "© 2025 Armstrong Web Development";
 
   return (
     <section className="py-16 mt-24">
@@ -32,25 +63,39 @@ const Footer2 = () => {
               </div>
               <p className="mt-4 font-bold">{tagline}</p>
             </div>
-            {menuItems.map((section: MenuItem, sectionIdx: number) => (
+            {sortedSections.map((section, sectionIdx) => (
               <div key={sectionIdx} className="min-w-0">
                 <span className="font-semibold break-words">{section.title}</span>
                 <ul className="space-y-4 text-muted-foreground">
-                  {section.links.map((link, linkIdx) => (
+                  {(sectionMap[section.title] ?? []).map((page, linkIdx) => (
                     <li key={linkIdx} className="font-medium">
-                      <Link href={link.url} className="hover:text-primary">
-                        {link.text}
+                      <Link href={`/pages/${page.slug}`} className="hover:text-primary">
+                        {page.title}
                       </Link>
                     </li>
                   ))}
                 </ul>
               </div>
             ))}
+            {unsectionedPages.length > 0 && (
+              <div className="min-w-0">
+                <span className="font-semibold break-words">Other</span>
+                <ul className="space-y-4 text-muted-foreground">
+                  {unsectionedPages.map((page, linkIdx) => (
+                    <li key={linkIdx} className="font-medium">
+                      <Link href={`/pages/${page.slug}`} className="hover:text-primary">
+                        {page.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
           <div className="mt-24 flex flex-col items-center gap-2 border-t pt-8 text-xl font-medium text-muted-foreground">
             <Image
-              src="/uploads/AWD_logo.webp"
-              alt="Armstrong Web Development Logo"
+              src={logo.src}
+              alt={logo.alt}
               width={150}
               height={150}
             />
