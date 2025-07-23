@@ -9,31 +9,14 @@ media_folder: "public/uploads"
 public_folder: "/uploads"
 
 collections:
-  - name: "sections"
-    label: "Sections"
-    folder: "content/sections"
-    create: true
-    slug: "{{name}}"
-    fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Order", name: "order", widget: "number", required: false }
-      - { label: "Description", name: "description", widget: "text", required: false }
-
   - name: "pages"
     label: "Pages"
-    folder: "content/pages"
+    folder: "content"
     create: true
-    slug: "{{name}}"
+    slug: "{{path}}/{{name}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Description", name: "description", widget: "text", required: false }
-      - label: "Section"
-        name: "section"
-        widget: "relation"
-        collection: "sections"
-        search_fields: ["title"]
-        value_field: "title"
-        required: false
       - label: "Hero Section"
         name: "hero"
         widget: "object"
@@ -42,12 +25,66 @@ collections:
           - { label: "Description", name: "hero_description", widget: "text", required: false }
           - { label: "Join Us Text", name: "join_us", widget: "string", required: false }
           - { label: "Background Image", name: "backgroundImage", widget: "image", required: false }
-      - label: "Components"
-        name: "components"
-        widget: "list"
-        required: false
-        fields:
-          - { label: "Type", name: "type", widget: "select", options: ["gallery", "cta", "testimonial"], required: true }
-          - { label: "Content", name: "content", widget: "text", required: false }
-          - { label: "Image", name: "image", widget: "image", required: false }
       - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "leadership_staff"
+    label: "Leadership & Staff"
+    folder: "content/about-us"
+    create: false
+    slug: "leadership-staff"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text", required: false }
+      - label: "Staff"
+        name: "staff"
+        widget: "list"
+        fields:
+          - { label: "Name", name: "name", widget: "string" }
+          - { label: "Image", name: "image", widget: "image" }
+          - { label: "Description", name: "description", widget: "string" }
+      - label: "Elders"
+        name: "elders"
+        widget: "list"
+        fields:
+          - { label: "Name", name: "name", widget: "string" }
+          - { label: "Image", name: "image", widget: "image" }
+          - { label: "Description", name: "description", widget: "string" }
+      - label: "Deacons"
+        name: "deacons"
+        widget: "list"
+        fields:
+          - { label: "Name", name: "name", widget: "string" }
+          - { label: "Image", name: "image", widget: "image" }
+          - { label: "Description", name: "description", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown", required: false }
+
+  - name: "navigation"
+    label: "Navigation Links"
+    files:
+      - file: "content/navigation_links.json"
+        label: "Navigation Links"
+        name: "navigation_links"
+        fields:
+          - label: "Logo"
+            name: "logo"
+            widget: "object"
+            fields:
+              - { label: "Source", name: "src", widget: "string" }
+              - { label: "Alt Text", name: "alt", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+          - { label: "Tagline", name: "tagline", widget: "string" }
+          - { label: "Address", name: "address", widget: "string" }
+          - { label: "Phone", name: "phone", widget: "string" }
+          - label: "Menu Items"
+            name: "menuItems"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - label: "Links"
+                name: "links"
+                widget: "list"
+                fields:
+                  - { label: "Text", name: "text", widget: "string" }
+                  - { label: "URL", name: "url", widget: "string" }
+          - { label: "Copyright", name: "copyright", widget: "string" }
