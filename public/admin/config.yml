@@ -52,33 +52,7 @@ collections:
       - label: "Deacons"
         name: "deacons"
         widget: "list"
-        required: false
-        types:
-          - label: "Contact"
-            name: "contact"
-            widget: "object"
-            fields:
-              - { label: "Type", name: "type", widget: "hidden", default: "Contact" }
-              - { label: "Email", name: "email", widget: "string", required: true }
-              - { label: "Phone", name: "phone", widget: "string", required: false }
-          - label: "Card"
-            name: "card"
-            widget: "object"
-            fields:
-              - { label: "Type", name: "type", widget: "hidden", default: "Card" }
-              - { label: "Title", name: "title", widget: "string", required: true }
-              - { label: "Image", name: "image", widget: "image", required: true }
-          - label: "Text"
-            name: "text"
-            widget: "object"
-            fields:
-              - { label: "Type", name: "type", widget: "hidden", default: "Text" }
-              - { label: "Content", name: "content", widget: "markdown", required: true }
-          - label: "Leadership Card"
-            name: "leadershipCard"
-            widget: "object"
-            fields:
-              - { label: "Type", name: "type", widget: "hidden", default: "LeadershipCard" }
-              - { label: "Name", name: "name", widget: "string", required: true }
-              - { label: "Role", name: "role", widget: "string", required: true }
-              - { label: "Image", name: "image", widget: "image", required: false }
+        fields:
+          - { label: "Name", name: "name", widget: "string" }
+          - { label: "Image", name: "image", widget: "image" }
+          - { label: "Description", name: "description", widget: "string" }
