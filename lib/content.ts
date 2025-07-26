@@ -63,11 +63,16 @@ export function getSection(slug: string): Section | undefined {
 export function getPages(): Page[] {
   const pagesDirectory = path.join(contentDirectory, 'pages')
   
+  console.log('Looking for pages in:', pagesDirectory)
+  
   if (!fs.existsSync(pagesDirectory)) {
+    console.log('Pages directory does not exist')
     return []
   }
   
   const filenames = fs.readdirSync(pagesDirectory)
+  console.log('Files found in pages directory:', filenames)
+  
   const pages = filenames
     .filter(name => name.endsWith('.md'))
     .map(name => {
@@ -75,6 +80,8 @@ export function getPages(): Page[] {
       const fileContents = fs.readFileSync(fullPath, 'utf8')
       const { data, content } = matter(fileContents)
       const slug = name.replace(/\.md$/, '')
+      
+      console.log(`Processing page: ${slug}`, data)
       
       return {
         slug,
@@ -84,6 +91,7 @@ export function getPages(): Page[] {
       } as Page
     })
   
+  console.log('Final pages array:', pages.map(p => ({ slug: p.slug, title: p.title, section: p.section })))
   return pages
 }
 
@@ -107,5 +115,21 @@ export function getContentBySection(): SectionWithPages[] {
   return sections.map(section => ({
     ...section,
     pages: pages.filter(page => page.section === section.slug)
+  }))
+}
+
+// Generate static params for sections
+export function generateSectionParams() {
+  const sections = getSections()
+  return sections.map(section => ({
+    slug: section.slug
+  }))
+}
+
+// Generate static params for pages
+export function generatePageParams() {
+  const pages = getPages()
+  return pages.map(page => ({
+    slug: page.slug
   }))
 }
