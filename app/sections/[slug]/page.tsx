@@ -1,25 +1,29 @@
 import { notFound } from 'next/navigation'
-import { getSection, getPagesBySection, generateSectionParams } from '../../../lib/content'
+import { getSection, getPagesBySection, getSections } from '../../../lib/content'
 import Link from 'next/link'
 
 interface SectionPageProps {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
 export function generateStaticParams() {
-  return generateSectionParams()
+  const sections = getSections()
+  return sections.map(section => ({
+    slug: section.slug
+  }))
 }
 
-export default function SectionPage({ params }: SectionPageProps) {
-  const section = getSection(params.slug)
+export default async function SectionPage({ params }: SectionPageProps) {
+  const { slug } = await params
+  const section = getSection(slug)
   
   if (!section) {
     notFound()
   }
 
-  const pages = getPagesBySection(params.slug)
+  const pages = getPagesBySection(slug)
 
   return (
     <div>

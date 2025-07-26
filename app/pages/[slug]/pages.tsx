@@ -1,20 +1,24 @@
 import { notFound } from 'next/navigation'
-import { getPage, getSection, generatePageParams } from '../../../lib/content'
+import { getPage, getSection, getPages } from '../../../lib/content'
 import ReactMarkdown from 'react-markdown'
 import Link from 'next/link'
 
 interface PageDetailProps {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
 export function generateStaticParams() {
-  return generatePageParams()
+  const pages = getPages()
+  return pages.map(page => ({
+    slug: page.slug
+  }))
 }
 
-export default function PageDetail({ params }: PageDetailProps) {
-  const page = getPage(params.slug)
+export default async function PageDetail({ params }: PageDetailProps) {
+  const { slug } = await params
+  const page = getPage(slug)
   
   if (!page) {
     notFound()
