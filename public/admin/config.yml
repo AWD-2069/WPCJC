@@ -5,24 +5,42 @@ backend:
   auth_type: pkce
   app_id: 10bfa9d8d0fe5cbaca2b79693542aee0498a162912784c79d442b110ca7365d2
 
+  commit_messages:
+    create: Create {{collection}} “{{slug}}”
+    update: Update {{collection}} “{{slug}}”
+    delete: Delete {{collection}} “{{slug}}”
+    uploadMedia: Upload “{{path}}”
+    deleteMedia: Delete “{{path}}”
+    openAuthoring: '{{message}}'
+
 media_folder: "public/uploads"
 public_folder: "/uploads"
 
 collections:
+  # Sections Collection
+  - name: "sections"
+    label: "Sections"
+    folder: "content/sections"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Order", name: "order", widget: "number", default: 0}
+
+  # Pages Collection
   - name: "pages"
     label: "Pages"
-    folder: "content"
+    folder: "content/pages"
     create: true
-    slug: "{{path}}/{{name}}"
+    slug: "{{slug}}"
     fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Description", name: "description", widget: "text", required: false }
-      - label: "Hero Section"
-        name: "hero"
-        widget: "object"
-        fields:
-          - { label: "Heading", name: "heading", widget: "string", required: false }
-          - { label: "Description", name: "hero_description", widget: "text", required: false }
-          - { label: "Join Us Text", name: "join_us", widget: "string", required: false }
-          - { label: "Background Image", name: "backgroundImage", widget: "image", required: false }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - {label: "Title", name: "title", widget: "string"}
+      - label: "Section"
+        name: "section"
+        widget: "relation"
+        collection: "sections"
+        search_fields: ["title"]
+        value_field: "{{slug}}"
+        display_fields: ["title"]
+        required: false
+      - {label: "Body", name: "body", widget: "markdown"}
