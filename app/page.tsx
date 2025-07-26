@@ -28,7 +28,6 @@ export default function HomePage() {
               {section.title}
             </Link>
           </h2>
-          {section.description && <p>{section.description}</p>}
           
           {section.pages.length > 0 && (
             <ul>
