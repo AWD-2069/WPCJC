@@ -1,7 +1,5 @@
 import Image from "next/image";
 import { Menu } from "lucide-react";
-import navigationData from "@/content/navigation_links.json";
-
 import {
   Accordion,
   AccordionContent,
@@ -24,20 +22,26 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { SectionMeta } from "@/lib/navigation";
 
-interface SubLink {
-  text: string;
-  url: string;
+interface Navbar1Props {
+  sections: SectionMeta[];
+  logo?: {
+    src: string;
+    alt: string;
+    title: string;
+    url: string;
+  };
 }
 
-interface MenuSection {
-  title: string;
-  links: SubLink[];
-}
+const defaultLogo = {
+  src: "/uploads/WPCJC_logo.webp",
+  alt: "Westminster Presbyterian Church in Johnson City, TN Logo",
+  title: "Westminster Presbyterian Church",
+  url: "https://www.wpcjc.org",
+};
 
-const Navbar1 = () => {
-  const { logo, menuItems } = navigationData;
-
+const Navbar1 = ({ sections, logo = defaultLogo }: Navbar1Props) => {
   return (
     <header className="py-4">
       <div className="container">
@@ -61,23 +65,23 @@ const Navbar1 = () => {
             <div className="flex items-center">
               <NavigationMenu>
                 <NavigationMenuList>
-                  {menuItems.map((section: MenuSection) =>
-                    section.links && section.links.length > 0 ? (
-                      <NavigationMenuItem key={section.title}>
+                  {sections.map((section) =>
+                    section.pages && section.pages.length > 0 ? (
+                      <NavigationMenuItem key={section.slug}>
                         <NavigationMenuTrigger>{section.title}</NavigationMenuTrigger>
                         <NavigationMenuContent className="bg-popover text-popover-foreground">
-                          {section.links.map((link) => (
+                          {section.pages.map((page) => (
                             <NavigationMenuLink
                               asChild
-                              key={link.text}
+                              key={page.url}
                               className="w-80"
                             >
                               <a
                                 className="flex flex-row gap-4 rounded-md p-3 leading-none no-underline transition-colors outline-none select-none hover:bg-muted hover:text-accent-foreground"
-                                href={link.url}
+                                href={page.url}
                               >
                                 <div>
-                                  <div className="text-sm font-semibold">{link.text}</div>
+                                  <div className="text-sm font-semibold">{page.title}</div>
                                 </div>
                               </a>
                             </NavigationMenuLink>
@@ -139,20 +143,20 @@ const Navbar1 = () => {
                     collapsible
                     className="flex w-full flex-col gap-4"
                   >
-                    {menuItems.map((section: MenuSection) =>
-                      section.links && section.links.length > 0 ? (
-                        <AccordionItem key={section.title} value={section.title} className="border-b-0">
+                    {sections.map((section) =>
+                      section.pages && section.pages.length > 0 ? (
+                        <AccordionItem key={section.slug} value={section.slug} className="border-b-0">
                           <AccordionTrigger className="text-md py-0 font-semibold hover:no-underline">
                             {section.title}
                           </AccordionTrigger>
                           <AccordionContent className="mt-2">
-                            {section.links.map((link) => (
+                            {section.pages.map((page) => (
                               <a
-                                key={link.text}
-                                href={link.url}
+                                key={page.url}
+                                href={page.url}
                                 className="flex flex-row gap-4 rounded-md p-3 leading-none no-underline transition-colors outline-none select-none hover:bg-muted hover:text-accent-foreground text-sm font-semibold"
                               >
-                                {link.text}
+                                {page.title}
                               </a>
                             ))}
                           </AccordionContent>

@@ -1,17 +1,21 @@
-import footerData from "@/content/navigation_links.json";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+import { SectionMeta } from "@/lib/navigation";
 
-interface MenuItem {
-  title: string;
-  links: {
-    text: string;
-    url: string;
-  }[];
+interface Footer2Props {
+  sections: SectionMeta[];
 }
 
-const Footer2 = () => {
-  const { logo, tagline, menuItems, copyright } = footerData;
+const Footer2 = ({ sections }: Footer2Props) => {
+  // You can hardcode logo/tagline or pass as props as well
+  const logo = {
+    src: "/uploads/WPCJC_logo.webp",
+    alt: "Westminster Presbyterian Church in Johnson City, TN Logo",
+    title: "Westminster Presbyterian Church",
+    url: "https://www.wpcjc.org",
+  };
+  const tagline = "A church family grounded in truth and growing in Christ.";
+  const copyright = "© 2025 Armstrong Web Development";
 
   return (
     <section className="py-16 mt-24">
@@ -32,14 +36,14 @@ const Footer2 = () => {
               </div>
               <p className="mt-4 font-bold">{tagline}</p>
             </div>
-            {menuItems.map((section: MenuItem, sectionIdx: number) => (
-              <div key={sectionIdx} className="min-w-0">
+            {sections.map((section) => (
+              <div key={section.slug} className="min-w-0">
                 <span className="font-semibold break-words">{section.title}</span>
                 <ul className="space-y-4 text-muted-foreground">
-                  {section.links.map((link, linkIdx) => (
-                    <li key={linkIdx} className="font-medium">
-                      <Link href={link.url} className="hover:text-primary">
-                        {link.text}
+                  {section.pages.map((page) => (
+                    <li key={page.url} className="font-medium">
+                      <Link href={page.url} className="hover:text-primary">
+                        {page.title}
                       </Link>
                     </li>
                   ))}
@@ -51,8 +55,8 @@ const Footer2 = () => {
             <Image
               src="/uploads/AWD_logo.webp"
               alt="Armstrong Web Development Logo"
-              width={150}
-              height={150}
+              width={250}
+              height={250}
             />
             <p className="text-center">{copyright}</p>
           </div>

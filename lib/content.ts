@@ -13,11 +13,18 @@ export interface Section {
   order?: number
 }
 
+export type PageBlock =
+  | { type: "hero"; heading: string; description: string; join_us: string; backgroundImage?: string }
+  | { type: "infoCard" }
+  | { type: "contact" }
+  | { type: "markdown"; content: string };
+
 export interface Page {
-  slug: string
-  title: string
-  content: string
-  section?: string
+  title: string;
+  slug: string;
+  section?: string;
+  content?: string;
+  blocks?: PageBlock[];
 }
 
 export interface SectionWithPages extends Section {

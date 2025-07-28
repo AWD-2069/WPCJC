@@ -43,4 +43,28 @@ collections:
         value_field: "{{slug}}"
         display_fields: ["title"]
         required: false
-      - {label: "Body", name: "body", widget: "markdown"}
+      - label: "Blocks"
+        name: "blocks"
+        widget: "list"
+        types:
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - {label: "Heading", name: "heading", widget: "string"}
+              - {label: "Description", name: "description", widget: "string"}
+              - {label: "Join Us", name: "join_us", widget: "string"}
+              - {label: "Background Image", name: "backgroundImage", widget: "image", required: false}
+          - label: "Info Card"
+            name: "infoCard"
+            widget: "object"
+            fields: []
+          - label: "Contact"
+            name: "contact"
+            widget: "object"
+            fields: []
+          - label: "Markdown"
+            name: "markdown"
+            widget: "object"
+            fields:
+              - {label: "Content", name: "content", widget: "markdown"}

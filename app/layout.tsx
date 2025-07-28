@@ -4,6 +4,7 @@ import "./globals.css";
 
 import { Footer2 } from "@/components/footer2";
 import { Navbar1 } from "@/components/navbar1";
+import { getSectionsAndPages } from "@/lib/navigation";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,14 +26,16 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const sections = getSectionsAndPages();
+
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased px-4 sm:px-8 md:px-16 lg:px-32 xl:px-64`}
       >
-        <Navbar1 />
+        <Navbar1 sections={sections} />
         {children}
-        <Footer2 />
+        <Footer2 sections={sections} />
       </body>
     </html>
   );
