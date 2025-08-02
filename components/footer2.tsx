@@ -32,17 +32,17 @@ const Footer2 = ({ sections }: Footer2Props) => {
                   width={40}
                   height={40}
                 />
-                <span className="text-xl font-semibold">{logo.title}</span>
+                <span className="text-md font-semibold">{logo.title}</span>
               </div>
-              <p className="mt-4 font-bold">{tagline}</p>
+              <p className="mt-4 text-sm font-bold">{tagline}</p>
             </div>
             {sections.map((section) => (
               <div key={section.slug} className="min-w-0">
                 <span className="font-semibold break-words">{section.title}</span>
                 <ul className="space-y-4 text-muted-foreground">
                   {section.pages.map((page) => (
-                    <li key={page.url} className="font-medium">
-                      <Link href={page.url} className="hover:text-primary">
+                    <li key={page.url} className="text-sm">
+                      <Link href={page.url} className="text-sm hover:text-primary">
                         {page.title}
                       </Link>
                     </li>

@@ -15,9 +15,11 @@ export interface Section {
 
 export type PageBlock =
   | { type: "hero"; heading: string; description: string; join_us: string; backgroundImage?: string }
-  | { type: "infoCard" }
-  | { type: "contact" }
-  | { type: "markdown"; content: string };
+  | { type: "NavigationCards"; items: { title: string; image?: string; link?: string }[] }
+  | { type: "contact"; email?: { email: string }[]; address?: { address: string }[]; phone?: { phone: string }[] }
+  | { type: "faq"; items: { question: string; answer: string }[] }
+  | { type: "markdown"; content: string }
+  | { type: "leadership"; items: { name: string; role: string; image: string; description?: string }[] };
 
 export interface Page {
   title: string;
@@ -103,9 +105,40 @@ export function getPages(): Page[] {
 }
 
 // Load a single page by slug
-export function getPage(slug: string): Page | undefined {
-  const pages = getPages()
-  return pages.find(page => page.slug === slug)
+export function getPage(slug: string): Page | null {
+  const filePath = path.join(process.cwd(), 'content/pages', `${slug}.md`)
+  if (!fs.existsSync(filePath)) return null
+
+  const fileContent = fs.readFileSync(filePath, 'utf8')
+  const { data, content } = matter(fileContent)
+
+  const blocks: PageBlock[] = Array.isArray(data.blocks)
+    ? data.blocks.map((block: PageBlock) => {
+        if (block.type === "contact") {
+          return {
+            ...block,
+            email: Array.isArray(block.email) ? block.email : [],
+            address: Array.isArray(block.address) ? block.address : [],
+            phone: Array.isArray(block.phone) ? block.phone : [],
+          }
+        }
+        if (block.type === "faq") {
+          return {
+            ...block,
+            items: Array.isArray(block.items) ? block.items : [],
+          }
+        }
+        return block
+      })
+    : []
+
+  return {
+    title: data.title || '',
+    slug,
+    section: data.section,
+    content,
+    blocks,
+  }
 }
 
 // Load pages by section

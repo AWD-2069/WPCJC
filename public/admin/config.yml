@@ -43,6 +43,7 @@ collections:
         value_field: "{{slug}}"
         display_fields: ["title"]
         required: false
+      - {label: "Redirect URL", name: "redirect_url", widget: "string", required: false}
       - label: "Blocks"
         name: "blocks"
         widget: "list"
@@ -55,20 +56,58 @@ collections:
               - {label: "Description", name: "description", widget: "string"}
               - {label: "Join Us", name: "join_us", widget: "string"}
               - {label: "Background Image", name: "backgroundImage", widget: "image", required: false}
-          - label: "Info Card"
-            name: "infoCard"
+          - label: "Navigation Cards"
+            name: "NavigationCards"
             widget: "object"
             fields:
-              - {label: "Title", name: "title", widget: "string"}
-              - {label: "Text", name: "text", widget: "string"}
+              - label: "Cards"
+                name: "items"
+                widget: "list"
+                fields:
+                  - {label: "Title", name: "title", widget: "string"}
+                  - {label: "Image", name: "image", widget: "image", required: true}
+                  - {label: "Link", name: "link", widget: "string", required: true}
           - label: "Contact"
             name: "contact"
             widget: "object"
             fields:
-              - {label: "Email", name: "email", widget: "string"}
-              - {label: "Phone", name: "phone", widget: "string", required: false}
+              - label: "Email"
+              - name: "email"
+                widget: "list"
+                fields:
+                  - {label: "Email", name: "email", widget: "string"}
+              - label: "Address"
+              - name: "address"
+                widget: "list"
+                fields:
+                  - {label: "Address", name: "address", widget: "string"}
+              - label: "Phone"
+              - name: "phone"
+                widget: "list"
+                fields:
+                  - {label: "Phone", name: "phone", widget: "string"}
+          - label: "FAQ"
+            name: "faq"
+            widget: "object"
+            fields:
+              - label: "Items"
+                name: "items"
+                widget: "list"
+                fields:
+                  - {label: "Question", name: "question", widget: "string"}
+                  - {label: "Answer", name: "answer", widget: "markdown"}
           - label: "Markdown"
             name: "markdown"
             widget: "object"
             fields:
               - {label: "Content", name: "content", widget: "markdown"}
+          - name: "leadership"
+            label: "Leadership"
+            folder: "content/leadership"
+            create: true
+            slug: "{{slug}}"
+            fields:
+              - {label: "Name", name: "name", widget: "string"}
+              - {label: "Role", name: "role", widget: "string"}
+              - {label: "Image", name: "image", widget: "image", required: true}
+              - {label: "Description", name: "description", widget: "markdown", required: false}
