@@ -11,10 +11,13 @@ blocks:
     items:
       - title: Who We Are
         image: /uploads/who-we-are.webp
+        link: https://example.com/
       - title: Our Worship
         image: /uploads/our-worship.webp
+        link: https://example.com/
       - title: Church Leadership
         image: /uploads/church-leadership.webp
+        link: https://example.com/
   - type: leadership
     items:
       - name: Jane Doe

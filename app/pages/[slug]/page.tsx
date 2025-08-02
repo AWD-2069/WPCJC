@@ -1,4 +1,4 @@
-import { notFound } from 'next/navigation'
+import { notFound, redirect } from 'next/navigation'
 import { getPage, getSection, getPages } from '../../../lib/content'
 import ReactMarkdown from 'react-markdown'
 import Link from 'next/link'
@@ -70,25 +70,13 @@ export default async function PageDetail({ params }: PageDetailProps) {
 
   // Redirect if redirect_url is set
   if (page.redirect_url) {
-    if (typeof window !== "undefined") {
-      window.location.href = page.redirect_url
-      return null
-    }
-    // For SSR, use Next.js redirect
-    return redirect(page.redirect_url)
+    redirect(page.redirect_url)
   }
 
   const section = page.section ? getSection(page.section) : undefined
 
   return (
     <div>
-      {section && (
-        <nav>
-          <Link href={`/sections/${section.slug}`}>
-            ← Back to {section.title}
-          </Link>
-        </nav>
-      )}
       {Array.isArray(page.blocks)
         ? (
             <div>
