@@ -22,7 +22,7 @@ export function generateStaticParams() {
 }
 
 type PageBlock =
-  | { type: "hero"; heading: string; description: string; join_us: string; backgroundImage?: string }
+  | { type: "hero"; heading: string; description: string; join_us: string; backgroundImage?: string; backgroundVideo?: string }
   | { type: "NavigationCards"; items: { title: string; image?: string; link?: string }[] }
   | { type: "contact"; email?: { email: string }[]; address?: { address: string }[]; phone?: { phone: string }[] }
   | { type: "faq"; items: { question: string; answer: string }[] }

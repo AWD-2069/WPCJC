@@ -6,7 +6,7 @@ blocks:
     heading: Test Hero
     description: Test Description
     join_us: Make the site better
-    backgroundImage: /uploads/hero-bg.webp
+    backgroundVideo: /uploads/jonesborough-Aerial-Video.mp4
   - type: NavigationCards
     items:
       - title: Who We Are
